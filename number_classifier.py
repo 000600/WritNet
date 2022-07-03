@@ -23,14 +23,14 @@ classes = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight
 opt = Adam(learning_rate = 0.001)
 
 # Define input and output shapes
-input_shape = train_images.shape
+input_shape = train_images.shape[1:]
 output_shape = len(classes)
 
 # Create model
 model = Sequential()
 
 # Hidden layers
-model.add(Flatten(input_shape = input_shape[1:]))
+model.add(Flatten(input_shape = input_shape))
 model.add(Dense(512, activation = 'relu'))
 
 # Output layer
