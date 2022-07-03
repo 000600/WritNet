@@ -86,9 +86,9 @@ def display_img(index, predictions_array, true_label, img):
 
   predicted_label = np.argmax(predictions_array)
   if predicted_label == true_label:
-    color = 'green' # Green bar if definitive prediction is correct
+    color = 'green' # Green text if prediction is correct
   else:
-    color = 'red' # Red bar if definitive prediction is incorrect
+    color = 'red' # Red text if prediction is incorrect
 
   plt.xlabel("{} {}% ({})".format(classes[predicted_label], 100 * np.max(predictions_array), classes[true_label]), color = color) # Return the prediction value and its probability along with the correct value in parentheses
 
@@ -103,7 +103,7 @@ def display_array(index, predictions_array, true_label):
   predicted_label = np.argmax(predictions_array)
 
   plot[predicted_label].set_color('red') # Incorrect predictions shown in red
-  plot[true_label].set_color('green')# Correct predictions shown in red
+  plot[true_label].set_color('green')# Correct predictions shown in green
 
 # Display incorrect predictions in red, correct predictions in green, and other prediction probabilities in blue
 num_rows = 10 # Change this number to view more images and predictions
