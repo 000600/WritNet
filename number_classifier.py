@@ -1,11 +1,10 @@
 # Imports
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Input, Dropout
+from tensorflow.keras.layers import Flatten, Dense
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import SparseCategoricalCrossentropy
 from tensorflow.keras.callbacks import EarlyStopping
-from sklearn.metrics import classification_report, confusion_matrix
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -38,7 +37,7 @@ model.add(Dense(512, activation = 'relu'))
 model.add(Dense(output_shape, activation = 'softmax')) # Softmax activation function because the model is a multiclass classifier
 
 # Compile and train model
-epochs = 20
+epochs = 2
 model.compile(optimizer = opt, loss = SparseCategoricalCrossentropy(), metrics = ['accuracy'])
 history = model.fit(train_images, train_labels, epochs = epochs, validation_data = (test_images, test_labels))
 
@@ -78,7 +77,7 @@ pred_index = 0 # Change this number to view a different prediction-output set
 print(f"Model's predicted value on sample input: {np.argmax(predictions[pred_index])} | Actual label on same input: {test_labels[pred_index]}") # Convert probabilites into a definitive class by taking the highest probability
 
 # Function for viewing image inputs and the model's predictions based on those image inputs
-def plot_image(index, predictions_array, true_label, img):
+def display_img(index, predictions_array, true_label, img):
   true_label, img = true_label[index], img[index]
   plt.grid(False)
   plt.xticks([])
@@ -91,10 +90,10 @@ def plot_image(index, predictions_array, true_label, img):
   else:
     color = 'red' # Red bar if definitive prediction is incorrect
 
-  plt.xlabel("{} {:2.0f}% ({})".format(classes[predicted_label], 100 * np.max(predictions_array), classes[true_label]), color = color) # Return the prediction value and its probability along with the correct value in parentheses
+  plt.xlabel("{} {}% ({})".format(classes[predicted_label], 100 * np.max(predictions_array), classes[true_label]), color = color) # Return the prediction value and its probability along with the correct value in parentheses
 
 # Function for displaying multiple predictions and images
-def plot_value_array(index, predictions_array, true_label):
+def display_array(index, predictions_array, true_label):
   true_label = true_label[index]
   plt.grid(False)
   plt.xticks(range(10))
@@ -114,9 +113,9 @@ plt.figure(figsize = (2 * 2 * num_rows, 2 * num_rows)) # Scale plot to fit all i
 # Make a grid with predictions and input images
 for ind in range(num_images):
   plt.subplot(num_rows, 2 * num_rows, 2 * ind + 1)
-  plot_image(ind, predictions[ind], test_labels, test_images)
+  display_img(ind, predictions[ind], test_labels, test_images)
   plt.subplot(num_rows, 2 * num_rows, 2 * ind + 2)
-  plot_value_array(ind, predictions[ind], test_labels)
+  display_array(ind, predictions[ind], test_labels)
   filler = plt.xticks(range(10), classes, rotation = 90)
 
 # Display plot (the model's prediction probability distribution based on an image is plotted to the right of that image on the plot
