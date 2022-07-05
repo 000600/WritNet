@@ -37,7 +37,7 @@ model.add(Dense(512, activation = 'relu'))
 model.add(Dense(output_shape, activation = 'softmax')) # Softmax activation function because the model is a multiclass classifier
 
 # Compile and train model
-epochs = 2
+epochs = 20
 model.compile(optimizer = opt, loss = SparseCategoricalCrossentropy(), metrics = ['accuracy'])
 history = model.fit(train_images, train_labels, epochs = epochs, validation_data = (test_images, test_labels))
 
