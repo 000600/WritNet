@@ -10,7 +10,7 @@ This convolutional neural network (CNN) classifies the number someone wrote base
 Feel free to further tune the hyperparameters or build upon the model!
 
 ## The Dataset
-The dataset is an MNIST included within keras and contains approximately 70,000 (60,000 images in the train set and 10,000 images in the test set) 28 x 28 pixel images of human handwriting of numbers 0 - 9 and is included within the **number_classifier.py** file.
+The dataset is an MNIST included within Keras and contains approximately 70,000 (60,000 images in the train set and 10,000 images in the test set) 28 x 28 pixel images of human handwriting of numbers 0 - 9 and is included within the **number_classifier.py** file.
 
 ## Libraries
 This neural network was created with the help of the Tensorflow library.
