@@ -118,6 +118,6 @@ for ind in range(num_images):
   display_array(ind, predictions[ind], test_labels)
   filler = plt.xticks(range(10), classes, rotation = 90)
 
-# Display plot (the model's prediction probability distribution based on an image is plotted to the right of that image on the plot
+# Display plot (the model's prediction probability distribution based on an image is plotted to the right of that image on the plot)
 plt.tight_layout()
 plt.show()
